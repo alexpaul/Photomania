@@ -61,11 +61,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo" textLabel="A4x-Hq-8ya" detailTextLabel="BIK-Lq-dNU" style="IBUITableViewCellStyleSubtitle" id="R3l-NK-6pu">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Photo" textLabel="A4x-Hq-8ya" detailTextLabel="BIK-Lq-dNU" style="IBUITableViewCellStyleSubtitle" id="R3l-NK-6pu">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4x-Hq-8ya">
@@ -81,6 +81,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="sX2-0j-XZp" kind="push" identifier="Show Image" id="rKQ-PH-EsE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -94,15 +97,32 @@
             </objects>
             <point key="canvasLocation" x="1001" y="-232"/>
         </scene>
-        <!--View Controller-->
+        <!--Image View Controller-->
         <scene sceneID="KiD-Ba-IGt">
             <objects>
-                <viewController id="sX2-0j-XZp" sceneMemberID="viewController">
+                <viewController id="sX2-0j-XZp" customClass="ImageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qmr-50-9ux">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pVT-Me-CRi" userLabel="Large White Activity Indicator"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="636-lx-65D"/>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="636-lx-65D" firstAttribute="top" secondItem="qmr-50-9ux" secondAttribute="top" type="default" id="45h-Gr-udR"/>
+                            <constraint firstItem="636-lx-65D" firstAttribute="centerY" secondItem="pVT-Me-CRi" secondAttribute="centerY" type="default" id="Isj-Uv-PaB"/>
+                            <constraint firstItem="636-lx-65D" firstAttribute="centerX" secondItem="pVT-Me-CRi" secondAttribute="centerX" type="default" id="S5G-ip-1Sx"/>
+                            <constraint firstItem="636-lx-65D" firstAttribute="leading" secondItem="qmr-50-9ux" secondAttribute="leading" type="default" id="YTP-9p-I18"/>
+                            <constraint firstItem="636-lx-65D" firstAttribute="trailing" secondItem="qmr-50-9ux" secondAttribute="trailing" type="default" id="ZaF-C8-tWV"/>
+                            <constraint firstItem="636-lx-65D" firstAttribute="bottom" secondItem="qmr-50-9ux" secondAttribute="bottom" type="default" id="aGg-Zs-eDI"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="nbN-e7-Spf"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="pVT-Me-CRi" id="Pdn-6f-lik"/>
+                        <outlet property="scrollView" destination="636-lx-65D" id="Odp-bE-4RQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJJ-uQ-CvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -29,6 +29,8 @@
 		5715C6E316F86CEC006752F2 /* CoreDataTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 5715C6D716F541B9006752F2 /* CoreDataTableViewController.h */; };
 		5715C6E416F86CEC006752F2 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5715C6D616F541B9006752F2 /* CoreDataTableViewController.m */; };
 		5715C6E716F9B4A8006752F2 /* PhotosByPhotographerCDTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5715C6E616F9B4A8006752F2 /* PhotosByPhotographerCDTVC.m */; };
+		5715C6E816FB0C2E006752F2 /* ImageViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 5715C6D416F54168006752F2 /* ImageViewController.h */; };
+		5715C6E916FB0C2E006752F2 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5715C6D516F54168006752F2 /* ImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -239,6 +241,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5715C6E816FB0C2E006752F2 /* ImageViewController.h in Sources */,
+				5715C6E916FB0C2E006752F2 /* ImageViewController.m in Sources */,
 				5715C6E316F86CEC006752F2 /* CoreDataTableViewController.h in Sources */,
 				5715C6E416F86CEC006752F2 /* CoreDataTableViewController.m in Sources */,
 				5715C6A516F538F7006752F2 /* main.m in Sources */,

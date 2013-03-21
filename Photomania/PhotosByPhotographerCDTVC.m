@@ -11,6 +11,24 @@
 
 @implementation PhotosByPhotographerCDTVC
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = nil;
+    
+    if ([sender isKindOfClass:[UITableViewCell class]]) {
+        indexPath = [self.tableView indexPathForCell:sender];
+    }
+    if (indexPath) {
+        if ([segue.identifier isEqualToString:@"Show Image"]) {
+            if ([segue.destinationViewController respondsToSelector:@selector(setImageURL:)]) {
+                Photo *photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+                NSURL *url = [NSURL URLWithString:[photo.imageURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                [segue.destinationViewController performSelector:@selector(setImageURL:) withObject:url];
+            }
+        }
+    }
+}
+
 - (void)setPhotographer:(Photographer *)photographer
 {
     _photographer = photographer;

@@ -7,8 +7,8 @@
 //
 
 #import "ImageViewController.h"
-#import "RecentPhotos.h"
-#import "RecentPhotosCache.h"
+//#import "RecentPhotos.h"
+//#import "RecentPhotosCache.h"
 //#import "AttributedStringViewController.h"
 
 @interface ImageViewController () <UIScrollViewDelegate>
@@ -16,27 +16,28 @@
 @property (nonatomic, strong) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *titleBarButtonItem;
 @property (nonatomic, strong) UIPopoverController *urlPopover;
-@property (nonatomic, strong) RecentPhotos *recentPhoto;
-@property (nonatomic, strong) RecentPhotosCache *cache; 
+//@property (nonatomic, strong) RecentPhotos *recentPhoto;
+//@property (nonatomic, strong) RecentPhotosCache *cache;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation ImageViewController
 
-
+/*
 - (RecentPhotos *)recentPhoto
 {
     if (!_recentPhoto) {
         _recentPhoto = [[RecentPhotos alloc] init];
     }
     return _recentPhoto; 
-}
+}*/
 
+/*
 - (RecentPhotosCache *)cache
 {
     if (!_cache) _cache = [[RecentPhotosCache alloc] init];
     return _cache; 
-}
+}*/
 
 // Maybe disabling the button would be better, but in this instance this was just to use this method
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -86,12 +87,15 @@
         dispatch_async(imageFetchQ, ^{
             
             //  Set the image url and photo id for the RecentPhotosCache class
-            self.cache.imageURL = self.imageURL; 
-            self.cache.photoId = self.photoId;
+            //self.cache.imageURL = self.imageURL;
+            //self.cache.photoId = self.photoId;
             
-            NSLog(@"size of cache is %d", [self.cache currentSizeOfCache]); 
+            //NSLog(@"size of cache is %d", [self.cache currentSizeOfCache]);
             
-            UIImage *image = [UIImage imageWithData:self.cache.imageData];
+            NSData *imageData = [[NSData alloc] initWithContentsOfURL:self.imageURL];
+            UIImage *image = [UIImage imageWithData:imageData]; 
+            
+            //UIImage *image = [UIImage imageWithData:self.cache.imageData];
             
             //  dispatch UIKit updates to the main thread
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -103,7 +107,7 @@
                     
                     // Add photo id to recent photos
                     // RecentPhotos class handles non duplicate entries
-                    self.recentPhoto.photoId = self.photoId;
+                    //self.recentPhoto.photoId = self.photoId;
                     [self.activityIndicator stopAnimating];
                 }
             });
