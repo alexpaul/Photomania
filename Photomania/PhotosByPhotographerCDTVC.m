@@ -43,7 +43,10 @@
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
         request.predicate = [NSPredicate predicateWithFormat:@"whoTook = %@", self.photographer];
         
-        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.photographer.managedObjectContext sectionNameKeyPath:nil cacheName:nil];  // Every managed object knows what context it was created in
+        // Every managed object knows what context it was created in
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                            managedObjectContext:self.photographer.managedObjectContext sectionNameKeyPath:nil
+                                                                                       cacheName:nil];  
     }else{
         self.fetchedResultsController = nil;
     }
